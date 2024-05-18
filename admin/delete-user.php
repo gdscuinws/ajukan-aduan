@@ -1,6 +1,7 @@
 <?php
 $nim = $_GET['nim'];
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 
 $query = mysqli_query($conn, "DELETE FROM actor WHERE nim=$nim");
 if ($query == 'true') {

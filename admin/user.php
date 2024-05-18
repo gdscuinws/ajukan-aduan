@@ -1,6 +1,7 @@
 <?php
 require "./layout-admin/top.php";
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 $query = "SELECT * FROM actor";
 $result = mysqli_query($conn, $query);
 

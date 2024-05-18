@@ -7,7 +7,8 @@ $password = $_POST['password'];
 $level = $_POST['level'];
 // var_dump($nim, $nama, $profesi, $password, $level);
 // die;
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 
 $query = mysqli_query($conn, "UPDATE `actor` SET `nama`='$nama',`profesi`='$profesi',`password`='$password' WHERE nim= $nim");
 if ($query == 'true') {

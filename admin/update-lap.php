@@ -1,5 +1,6 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 if (isset($_POST['ubah-lap'])) {
     $id = $_POST['id'];
     $nama = $_POST['nama'];

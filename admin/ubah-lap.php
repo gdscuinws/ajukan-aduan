@@ -1,7 +1,8 @@
 <?php
 require "./layout-admin/top.php";
 $id = $_GET['id'];
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 $query = "SELECT * FROM laporan WHERE id='$id' ";
 $result = mysqli_query($conn, $query);
 

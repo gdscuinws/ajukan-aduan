@@ -1,6 +1,7 @@
 <?php
 require "./layout-user/top.php";
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 $nim = $_SESSION['actor']['nim'];
 $query = "SELECT * FROM laporan WHERE nim = '$nim' ORDER BY id ASC";
 $result = mysqli_query($conn, $query);

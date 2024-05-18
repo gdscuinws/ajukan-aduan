@@ -8,7 +8,8 @@ $foto = $_FILES['foto']['name'];
 $status = $_POST['status'];
 $keterangan = $_POST['keterangan'];
 $nim = $_POST['nim'];
-$conn = mysqli_connect ("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 
 // echo $foto;
 // die;

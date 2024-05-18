@@ -1,6 +1,7 @@
 <?php
 $id = $_GET['id'];
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 
 $query = mysqli_query($conn, "DELETE FROM laporan WHERE id=$id");
 if ($query == 'true') {

@@ -1,6 +1,7 @@
 <?php
 $nim = $_GET['nim'];
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 $query = "SELECT * FROM actor WHERE nim='$nim' ";
 $result = mysqli_query($conn, $query);
 

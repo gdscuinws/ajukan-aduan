@@ -1,7 +1,8 @@
 <?php
 $status = $_POST['status'];
 $id = $_POST['id'];
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 
 $query = mysqli_query($conn, "UPDATE laporan SET status = '$status' WHERE id = '$id'");
 if ($query == 'true') {

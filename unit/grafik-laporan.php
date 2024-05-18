@@ -1,6 +1,7 @@
 <?php
 require "./layout-unit/top.php";
-$conn = mysqli_connect("localhost", "root", "", "aduan_invent");
+require "./../database/connection.php";
+$conn = connect();
 ?>
 <main>
     <div class="container-fluid px-4">
