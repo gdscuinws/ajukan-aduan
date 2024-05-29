@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 08:26 AM
+-- Generation Time: May 29, 2024 at 04:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,9 +42,9 @@ CREATE TABLE `actor` (
 INSERT INTO `actor` (`nim`, `nama`, `profesi`, `password`, `level`) VALUES
 (1, 'Admin', 'admin', '123', 1),
 (2, 'unit', 'unit', '123', 2),
-(2122, 'Ger', 'dosen', '123', 3),
 (2108096041, 'ICA', 'mahasiswa', '12345', 3),
-(2108096045, 'Keishara Jasmin', 'Mahasiswa', '12345', 3);
+(2108096045, 'Guntur Syarifuddin Putra ', 'Mahasiswa', '12345', 3),
+(2108096054, 'Farid Rafif', 'Mahasiswa', '123', 3);
 
 -- --------------------------------------------------------
 
@@ -69,9 +69,9 @@ CREATE TABLE `laporan` (
 --
 
 INSERT INTO `laporan` (`id`, `nama`, `tanggal`, `ruangan`, `barang`, `foto`, `status`, `keterangan`, `nim`) VALUES
-(45, 'Keishara Jasmin', '2023-12-02', 11.1, 'Kursi', 'BoxNonOrganik.png', 'Sedang Diperbaiki', 'yururtuttyt', 2108096045),
-(46, 'Keishara Jasmin', '2023-12-05', 4.5, '', 'BoxOrganik.png', 'Sudah Diperbaiki', 'iweriu3ew', 2108096045),
-(47, 'Keishara Jasmin', '2023-12-05', 3.4, 'Kursi', 'BoxB3.png', 'Belum Diperbaiki', 'jkjshfjhsdf', 2108096045);
+(48, 'Guntur Syarifuddin Putra ', '2024-05-29', 2.9, 'Lampu', 'BoxB3.png', 'Sedang Diperbaiki', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', 2108096045),
+(52, 'Farid Rafif', '2024-05-29', 3.1, 'Kursi', 'Tanda-Kursi-Kuliah-Tidak-Layak-Pakai-Dan-Harus-Segera-Di-Ganti.jpg', 'Sedang Diperbaiki', 'Sudah tidak layak pakai', 2108096054),
+(53, 'Guntur Syarifuddin Putra ', '2024-05-29', 2.9, 'Proyektor', 'proyektor_mitshubisi_rusak_mat_1697445696_bcef8268_progressive.jpg', 'Belum Diperbaiki', 'Tidak menyala abangkuu\r\n', 2108096045);
 
 --
 -- Indexes for dumped tables
@@ -98,7 +98,7 @@ ALTER TABLE `laporan`
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Constraints for dumped tables

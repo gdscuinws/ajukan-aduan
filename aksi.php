@@ -1,18 +1,17 @@
 <?php
 session_start();
+require "./connection/conn.php";
 $nim = $_POST['nim'];
 $password = $_POST['password'];
-
-require "./database/connection.php";
-$conn = connect();
 $query = "SELECT * FROM `actor` WHERE nim='$nim' && password='$password'";
 $login = mysqli_query($conn, $query);
 $isLogin = mysqli_num_rows($login);
+// var_dump($isLogin);
 
 if (isset($_POST['login'])) {
     if ($isLogin > 0) {
         $data = mysqli_fetch_assoc($login);
-        // var_dump($data);
+        var_dump($data);
         $_SESSION['actor'] = $data;
         if ($data['level'] == 1) {
             $_SESSION['level'] = $data['level'];
@@ -29,6 +28,7 @@ if (isset($_POST['login'])) {
         header("Location: index.php?msg=$msg");
         exit;
     }
+
 }
 if (isset($_POST['signup'])) {
     //    echo "tombol dubmit ditekan" 

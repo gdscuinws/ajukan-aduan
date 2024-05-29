@@ -1,71 +1,91 @@
 <?php
 session_start();
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.84.0">
-  <title>Ajuakan Aduan</title>
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>SB Admin 2 - Login</title>
 
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
-
-
-  <!-- Custom styles for this template -->
-  <link href="./assets/signin.css" rel="stylesheet">
 </head>
 
-<body class="text-center">
-  <main class="form-signin bg-white bg-opacity-70 container-fluid rounded-3 py-3">
-    <form method="post" action="aksi.php">
-      <img class="login-brand mb-3" src="./assets/img/logo main.png" alt="" width="210" height="">
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<body class="bg-gradient-primary">
 
+    <div class="container">
 
-      <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" placeholder="NIM" name="nim">
-        <label for="floatingInput">NIM</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-        <label for="floatingPassword">Password</label>
-      </div>
-      <div class="d-grid gap-2 d-md-block">
-        <button class="btn btn-lg btn-primary" type="submit" name="login">Login</button>
-        <a href="signup.php" class="btn btn-lg btn-primary">SignUp</a>
-      </div>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017–2023</p>
-      <?php if (isset($_GET['msg'])) echo $_GET['msg'] ?>
-    </form>
-  </main>
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
 
+            <div class="col-5">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-2">Welcome Back!</h1>
+                                        <img class="login-brand mb-2" src="./assets/img/logo main.png" alt="" width="300" height="">
+                                    </div>
+                                    <form class="user" method="post" action="aksi.php">
+                                        <div class="form-group">
+                                            <label for="nim">NIM atau NIP :</label>
+                                            <input type="text" class="form-control form-control-user" id="nim"
+                                                name="nim" require placeholder="NIM atau NIP">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password :</label>
+                                            <input type="password" class="form-control form-control-user" id="password"
+                                                name="password" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-user btn-block"type="submit" name="login" value="login">Login</button>
+                                        <p class="text-center mt-2 font-italic" style="font-size: 14px">don't have an account? <a href="register.php">Register</a></p>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <?php if (isset($_GET['msg']))
+                                            echo $_GET['msg'] ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-</body>
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
 
-</html>
+    </body>
+
+    </html>

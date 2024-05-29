@@ -1,75 +1,80 @@
 <?php
-require "./layout-user/top.php";
+require "layout/top.php";
+require "../connection/conn.php";
+$nim = $_SESSION['actor']['nim'];
+$query = "SELECT * FROM laporan WHERE nim = '$nim'";
+$result = mysqli_query($conn, $query);
+// $data = mysqli_fetch_array($result);
+// var_dump($data);
 ?>
-<main>
-    <div class="container-fluid px-4">
-        <h1 class="mt-4">Formulir Laporan Kerusakan </h1>
-        <form action="add-lap.php" method="post" enctype="multipart/form-data">
-            <!-- <div class="mb-3">
-                <label for="nim" class="form-label">NIM</label>
-                <input type="text" class="form-control" id="nim" name="nim" required value="<?= $_SESSION['actor']['nim'] ?>" readonly>
-            </div> -->
-            <div class="mb-3">
-                <label for="nim" class="form-label">NIM</label>
-                <input type="text" class="form-control" id="nim" name="nim" required value="<?= $_SESSION['actor']['nim'] ?>" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="nama" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" required value="<?= $_SESSION['actor']['nama'] ?>" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="tanggal" class="form-label">Tanggal</label>
-                <input type="date" class="form-control" id="tanggal" name="tanggal" readonly required>
-            </div>
-            <div class="mb-3">
-                <label for="ruangan" class="form-label">Ruangan</label>
-                <input type="text" class="form-control" id="ruangan" name="ruangan" required placeholder="ex : 3.10">
-            </div>
-            <div class="mb-3">
-                <label for="barang" class="form-label">Barang</label>
-                <select class="form-select" id="barang" name="barang">
-                    <option value="">Pilih Barang</option>
-                    <option value="Kursi">Kursi</option>
-                    <option value="Meja">Meja</option>
-                    <option value="AC">AC</option>
-                    <option value="Proyektor">Proyektor</option>
-                    <option value="Lampu">Lampu</option>
-                    <option value="Lainnya">Lainnya</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="foto" class="form-label">Foto Barang</label>
-                <input type="file" class="form-control" id="foto" name="foto" required>
-            </div>
-            <div class="mb-3">
-                <label for="keterangan" class="form-label">Keterangan</label>
-                <textarea type="text" class="form-control" id="keterangan" name="keterangan" required placeholder="Detail Kerusakan"></textarea>
-            </div>
-            <div class="mb-3">
-                <select class="form-select" id="status" name="status" required hidden>
-                    <option value="Belum Diperbaiki">Belum Diperbaiki</option>
-                    <option value="Sedang Diperbaiki">Sedang Diperbaiki</option>
-                    <option value="Sudah Diperbaiki">Sudah Diperbaiki</option>
-                </select>
-            </div>
-            <div class="d-grid gap-2 d-md-block">
-                <button class="btn btn-primary" type="submit" name="submit_lap">Kirim</button>
-                <button class="btn btn-danger" type="reset">Reset</button>
-            </div>
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    var today = new Date();
-                    var dd = String(today.getDate()).padStart(2, '0');
-                    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January = 0
-                    var yyyy = today.getFullYear();
-                    var formattedDate = yyyy + '-' + mm + '-' + dd;
-                    document.getElementById('tanggal').value = formattedDate;
-                });
-            </script>
-        </form>
+<h1 class="mb-2 text-gray-800 font-weight-bold">Daftar Laporan</h1>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-2 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-dark">Tabel Daftar Laporan
+        </h6>
+        <a href="tambah-laporan.php" class="btn btn-primary">Buat Laporan</a>
     </div>
-</main>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id Laporan</th>
+                        <th>Nama</th>
+                        <th>Tanggal</th>
+                        <th>Ruangan</th>
+                        <th>Nama Barang</th>
+                        <th>Foto Barang</th>
+                        <th>Keterangan</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $angka = 1; ?>
+                    <?php foreach ($result as $data): ?>
+                        <tr>
+                            <td><?= $data['id'] ?></td>
+                            <td><?= $data['nama'] ?></td>
+                            <td><?= $data['tanggal'] ?></td>
+                            <td><?= $data['ruangan'] ?></td>
+                            <td><?= $data['barang'] ?></td>
+                            <td><img src="../user/gambar/<?php echo $data['foto']; ?>" style="max-width: 100%;"></td>
+                            <td><?php echo (str_word_count($data['keterangan']) > 5) ? implode(' ', array_slice(explode(' ', $data['keterangan']), 0, 5)) . '...' : $data['keterangan']; ?>
+                            </td>
+                            <td>
+                                <?php
+                                if ($data['status'] == "Belum Diperbaiki") {
+                                    ?>
+                                    <span class="badge rounded-pill bg-danger text-white"><?= $data['status'] ?></span>
+                                    <?php
+                                } else if ($data['status'] == "Sedang Diperbaiki") {
+                                    ?>
+                                        <span class="badge rounded-pill bg-warning text-white"><?= $data['status'] ?></span>
+                                    <?php
+                                } else if ($data['status'] == "Sudah Diperbaiki") {
+                                    ?>
+                                            <span class="badge rounded-pill bg-success text-white"><?= $data['status'] ?></span>
+                                    <?php
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <a href="./ubah-laporan.php?id=<?= $data['id'] ?>" class="btn btn-warning">Edit</a>
+                                <a href="./delete-laporan.php?id=<?= $data['id'] ?>" class="btn btn-danger">Hapus</a>
+                            </td>
+                        </tr>
+                        <?php $angka++ ?>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <?php
-require "./layout-user/footer.php";
-require "./layout-user/bottom.php";
+require "layout/footer.php";
+?>
+<?php
+require "layout/bottom.php";
 ?>
